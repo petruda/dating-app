@@ -1,10 +1,10 @@
 ﻿using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace API.Controllers;
-
-
+namespace API.Controllers
+{
 [Route("api/[controller]")] // create route for the api EX : //HTTPS:LOCALHOST:5001/API/USERS not with caps lock
 [ApiController]
 
@@ -16,15 +16,15 @@ public class UsersController : ControllerBase
         _context = context;
     }
     [HttpGet]
-    public ActionResult<IEnumerable<AppUser>> GetUsers()
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
-        var users = _context.Users.ToList();
+        var users = await _context.Users.ToListAsync();
         return users;
     }
     [HttpGet("{id}")]
-    public ActionResult<AppUser> GetUser(int id)
+    public async Task<ActionResult<AppUser>> GetUser(int id)
     {
-        return _context.Users.Find(id);
-       
+        return await _context.Users.FindAsync(id);
     }
+}
 }
