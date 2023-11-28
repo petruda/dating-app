@@ -5,10 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-[Route("api/[controller]")] // create route for the api EX : //HTTPS:LOCALHOST:5001/API/USERS not with caps lock
-[ApiController]
-
-public class UsersController : ControllerBase
+public class UsersController : BaseApiController
 {
     private readonly DataContext _context;
     public UsersController(DataContext context)
