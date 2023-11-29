@@ -121,3 +121,11 @@
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/runtimes/win-arm64/native/e_sqlite3.dll
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/runtimes/win-x64/native/e_sqlite3.dll
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/runtimes/win-x86/native/e_sqlite3.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
