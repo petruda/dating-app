@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
+import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: []
+  providers: [
+    AccountService
+  ]
 })
 export class AppComponent implements OnInit {
   title = 'client';
