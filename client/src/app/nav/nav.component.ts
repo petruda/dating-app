@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-nav',
   standalone: true,
@@ -18,6 +19,14 @@ export class NavComponent {
   constructor(private accountService: AccountService){ }
 
   ngOnInit(): void{
+   this.getCurrentUser();
+  }
+
+  getCurrentUser(){
+    this.accountService.currentUser$.subscribe({
+      next: user => this.loggedIn = !!user,
+      error: error => console.log(error)
+    })
   }
 
   login(){
@@ -30,6 +39,7 @@ export class NavComponent {
     })
   }
   logout() {
+    this.accountService.logout();
     this.loggedIn = false;
   }
 }

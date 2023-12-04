@@ -12,17 +12,17 @@
           <li class="nav-item">
             <a class="nav-link">Messages</a>
           </li>
-          <li class="nav-item" (click)="logout()">
-            <a class="nav-link">Logout</a>
-          </li>
         </ul>
 
+
         <div class="dropdown" *ngIf="loggedIn">
-          <a class="dropdown-toggle text-light">welcome user</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item"> Edit Profile</a>
-            <a class="dropdown-item" (click)="logout()"> Logout</a>
-          </div>
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome User
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Edit Profile</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ul>
         </div>
 
         <form *ngIf="!loggedIn" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
