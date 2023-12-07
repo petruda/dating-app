@@ -28,13 +28,7 @@ export class RegisterComponent {
           this.cancel();
         },
         error: error => {
-          Swal.fire({
-            title: 'Error!',
-            text: error.error,
-            icon: 'error',
-            confirmButtonText: 'Close'
-          })
-          
+          Swal.fire(error.error);
         }
       })
     }
