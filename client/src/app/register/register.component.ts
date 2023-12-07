@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,12 @@ export class RegisterComponent {
           this.cancel();
         },
         error: error => {
-          console.log(error);
+          Swal.fire({
+            title: 'Error!',
+            text: error.error,
+            icon: 'error',
+            confirmButtonText: 'Close'
+          })
           
         }
       })
