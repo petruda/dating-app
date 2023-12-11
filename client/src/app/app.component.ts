@@ -19,9 +19,8 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     providers: [
-        AccountService,
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
-    ],
+        AccountService    
+      ],
     imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule, HomeComponent]
 })
 export class AppComponent implements OnInit {

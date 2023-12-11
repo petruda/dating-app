@@ -33,13 +33,7 @@ export class NavComponent {
 
   login(){
     this.accountService.login(this.model).subscribe({
-      next: () =>  this.router.navigateByUrl('/members'),
-      error: error => Swal.fire({
-        title: 'Error!',
-        text: error.error,
-        icon: 'error',
-        confirmButtonText: 'Close'
-      })
+      next: () =>  this.router.navigateByUrl('/members')
     })
   }
   logout() {
