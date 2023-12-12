@@ -129,3 +129,6 @@
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Data/UserSeedData.json
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/AutoMapper.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
