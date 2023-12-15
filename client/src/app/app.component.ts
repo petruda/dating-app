@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from './_services/account.service';
 import { User } from './_models/user';
 import { HomeComponent } from "./home/home.component";
-import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { MembersService } from './_services/members.service';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 
 
@@ -18,14 +19,14 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers: [
-        AccountService    
-      ],
+    providers: [AccountService, MembersService, JwtInterceptor],
     imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule, HomeComponent]
 })
 export class AppComponent implements OnInit {
-  title = 'client';
-  constructor( private accountService: AccountService) {}
+  title = 'THIRSTY';
+  constructor( private accountService: AccountService, private http: HttpClientModule) {}
+  
+  
   ngOnInit(): void {
     this.setCurrentUser();
   }
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
     const userString = localStorage.getItem('user');
     if(!userString) return;
     const user: User = JSON.parse(userString);
-    this.accountService.serCurrentUser(user);
+    this.accountService.setCurrentUser(user);
   }
 
 }

@@ -1,0 +1,38 @@
+<div class="row" style="width: 9rem;">
+
+<div class="col ms-3 mb-3 mt-4">
+
+    
+
+<div class="card" *ngIf="member">
+    <div class="card-img-wrapper">
+        <img src="{{member.photoUrl}}" class="card-img-top" alt="profile picture" >
+        <ul class="list-inline member-icons animate text-center">
+            <li class="list-inline-item">
+                <button class="btn brn-primary">
+                    <i class="bi bi-person"></i>
+                </button>
+            </li>
+            <li class="list-inline-item">
+                <button class="btn brn-primary">
+                    <i class="bi bi-balloon-heart"></i>
+                </button>
+            </li>
+            <li class="list-inline-item">
+                <button class="btn brn-primary">
+                    <i class="bi bi-chat-dots"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body ms-2 p-1">
+        <h6 class="card-title text-center mb-1">
+            <i class="bi bi-person-fill">{{member.knownAs}}</i> 
+        </h6>
+        <p class="card-text text-muted text-center">{{member.city}}</p>
+    </div>
+</div>
+
+
+</div>
+</div>

@@ -9,17 +9,8 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NavigationExtras, Router } from '@angular/router';
 import { catchError} from 'rxjs';
-import { ToastrService, provideToastr } from 'ngx-toastr';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from '../app.component';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { ToastrService} from 'ngx-toastr';
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideAnimations(), // required animations providers
-    provideToastr(), // Toastr providers
-  ]
-});
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
