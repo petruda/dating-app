@@ -8,7 +8,7 @@ import { AccountService } from './_services/account.service';
 import { User } from './_models/user';
 import { HomeComponent } from "./home/home.component";
 import { MembersService } from './_services/members.service';
-import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -19,8 +19,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers: [AccountService, MembersService, JwtInterceptor],
-    imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule, HomeComponent]
+    providers: [AccountService, MembersService],
+    imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule, HomeComponent,MatTabsModule]
 })
 export class AppComponent implements OnInit {
   title = 'THIRSTY';

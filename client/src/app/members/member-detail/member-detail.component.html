@@ -1,1 +1,61 @@
-<p>member-detail works!</p>
+<div class="row align-content-center" *ngIf="memeber">
+    <div class="col-4">
+        <div class="card">
+            <img src="{{memeber.photoUrl || './assets/user.png'}}" alt="{{memeber.knownAs}}" class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <strong>Location:</strong>
+                <p> {{memeber.city}}, {{memeber.country}}</p>
+            </div>
+            <div class="card-body">
+                <strong>Age:</strong>
+                <p> {{memeber.age}}</p>
+            </div>
+            <div class="card-body">
+                <strong>Last Active::</strong>
+                <p> {{memeber.lastActive}}</p>
+            </div>
+            <div class="card-body">
+                <strong>Member since:</strong>
+                <p> {{memeber.created}}</p>
+            </div>
+    
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Like</button>
+                    <button class="btn btn-primary">Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8 tabs">
+        <mat-tab-group [dynamicHeight]="true">
+            <mat-tab label="About {{memeber.knownAs}}">
+            <ng-template matTabContent>
+                <h4>Description</h4>
+                 <p>{{memeber.introduction}}</p>
+                  <h4>Looking for</h4>
+                 <p>{{memeber.lookingFor}}</p>
+            </ng-template>
+            </mat-tab>
+            <mat-tab label="Interests"> 
+             <ng-template matTabContent>
+                <h4>Interests</h4>
+                <p>{{memeber.interests}}</p>
+            </ng-template>
+            </mat-tab>
+            <mat-tab label="Photos"> 
+            <ng-template matTabContent>
+                <h4>Photos will go here</h4>
+            </ng-template>    
+            </mat-tab>
+            <mat-tab label="Messages"> 
+                <ng-template matTabContent>
+                <h4>Messages will go here</h4>    
+            </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+          
+    </div>
+</div>
+
