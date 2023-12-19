@@ -20,7 +20,7 @@
                 
 
         <div class="btn-group" *ngIf="accountService.currentUser$ | async" role="group" aria-label="Basic outlined example">
-          <button type="button" class=" ml-2 btn btn-outline-primary">Edit Profile</button>
+          <button type="button" routerLink="/member/edit" class=" ml-2 btn btn-outline-primary">Edit Profile</button>
           <button type="button" (click)="logout()" class="btn btn-outline-primary">Logout</button>
         </div>
 

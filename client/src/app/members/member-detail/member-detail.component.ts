@@ -16,6 +16,7 @@ import { GalleryModule, GalleryItem, ImageItem } from 'ng-gallery';
 })
 export class MemberDetailComponent {
   memeber: Member| undefined;
+  images: GalleryItem[]= [];
 
 
   constructor(private memberService: MembersService, private route: ActivatedRoute){}
@@ -28,7 +29,22 @@ export class MemberDetailComponent {
     const username = this.route.snapshot.paramMap.get('username');
     if(!username) return;
     this.memberService.getMember(username).subscribe({
-      next: member => this.memeber = member
+      next: member => {
+        
+        this.memeber = member,
+        this.getImages()
+      }
     })
   }
+
+  getImages(){
+if(!this.memeber) return;
+
+    for(const photo of this.memeber?.photos){
+      this.images.push(new ImageItem({src: photo.url, thumb: photo.url}))
+
+    }
+  }
+
+
 }
