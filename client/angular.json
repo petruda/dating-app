@@ -38,7 +38,8 @@
               "src/styles.scss",
               "./node_modules/ngx-toastr/toastr.css",
               "./node_modules/bootswatch/dist/vapor/bootstrap.css",
-              "./node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+              "./node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "./node_modules/ngx-spinner/animations/ball-atom.css"
             ],
             "scripts": [
               

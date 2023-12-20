@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {HttpClientModule } from '@angular/common/http';
@@ -9,6 +9,8 @@ import { User } from './_models/user';
 import { HomeComponent } from "./home/home.component";
 import { MembersService } from './_services/members.service';
 import {MatTabsModule} from '@angular/material/tabs';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BusyService } from './_services/busy.service';
 
 
 
@@ -16,15 +18,16 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
     selector: 'app-root',
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     standalone: true,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers: [AccountService, MembersService],
-    imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule, HomeComponent,MatTabsModule]
+    providers: [AccountService, MembersService, BusyService],
+    imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule, HomeComponent,MatTabsModule, NgxSpinnerModule]
 })
 export class AppComponent implements OnInit {
   title = 'THIRSTY';
-  constructor( private accountService: AccountService, private http: HttpClientModule) {}
+  constructor( private accountService: AccountService) {}
   
   
   ngOnInit(): void {

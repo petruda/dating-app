@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, NgModule, ViewChild } from '@angular/core';
+import { Component, HostListener, NgModule, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Member } from '../../_models/member';
 import { AccountService } from '../../_services/account.service';
@@ -22,6 +22,11 @@ import Swal from 'sweetalert2';
 })
 export class MemberEditComponent {
  @ViewChild('editForm') editForm: NgForm | undefined;
+ @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any){
+  if(this.editForm?.dirty){
+    $event.returnValue = true;
+  }
+ }
   member: Member | undefined;
   user: User | null = null;
 
@@ -44,13 +49,16 @@ export class MemberEditComponent {
     })
   }
   updateMember(){
-    console.log(this.member);
+    this.membersService.updateMember(this.editForm?.value).subscribe({
+      next: _ => {
 
-    Swal.fire({
-      title: "Changes saved",
-      text: "Your changes have been saved",
-      icon: "success"
+           Swal.fire({
+          title: "Changes saved",
+          text: "Your changes have been saved",
+          icon: "success"
+         });
+          this.editForm?.reset(this.member);
+      }
     });
-    this.editForm?.reset(this.member);
   }
 }
