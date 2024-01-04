@@ -12,13 +12,14 @@ import { GalleryModule } from 'ng-gallery';
 import { FormControl, FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { PhotoEditorComponent } from "../photo-editor/photo-editor.component";
 
 @Component({
-  selector: 'app-member-edit',
-  standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule,MatTabsModule,GalleryModule, FormsModule],
-  templateUrl: './member-edit.component.html',
-  styleUrl: './member-edit.component.scss'
+    selector: 'app-member-edit',
+    standalone: true,
+    templateUrl: './member-edit.component.html',
+    styleUrl: './member-edit.component.scss',
+    imports: [CommonModule, HttpClientModule, RouterModule, MatTabsModule, GalleryModule, FormsModule, PhotoEditorComponent]
 })
 export class MemberEditComponent {
  @ViewChild('editForm') editForm: NgForm | undefined;

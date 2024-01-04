@@ -59,7 +59,7 @@ public class UsersController : BaseApiController
     public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
     {
         var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
-        
+
         if( user == null) return NotFound();
 
         var result = await _photoService.AddPhotoAsync(file);
@@ -75,7 +75,10 @@ public class UsersController : BaseApiController
 
         user.Photos.Add(photo);
 
-        if (await _userRepository.SaveAllAsync()) return _mapper.Map<PhotoDto>(photo);
+        if (await _userRepository.SaveAllAsync())
+        {
+            return CreatedAtAction(nameof(GetUser), new { username = user.UserName}, _mapper.Map<PhotoDto>(photo));
+        }
         return BadRequest("Problem Uploading Photo");
     }
 }
