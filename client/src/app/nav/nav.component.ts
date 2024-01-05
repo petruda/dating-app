@@ -1,13 +1,11 @@
-import { Component, importProvidersFrom } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
-import { HttpClientModule, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
-// import { Observable, of } from 'rxjs';
-// import { User } from '../_models/user';
-import { Router, RouterModule, provideRouter } from '@angular/router';
-// import { routes } from '../app.routes';
-import Swal from 'sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
+import { Router, RouterModule } from '@angular/router';
+import { User } from '../_models/user';
+
 
 
 
