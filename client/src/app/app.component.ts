@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './_services/account.service';
 import { User } from './_models/user';
 import { HomeComponent } from "./home/home.component";
@@ -23,7 +23,7 @@ import { BusyService } from './_services/busy.service';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     providers: [AccountService, MembersService, BusyService],
-    imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule, HomeComponent,MatTabsModule, NgxSpinnerModule]
+    imports: [CommonModule, RouterOutlet, HttpClientModule, NavComponent, FormsModule, HomeComponent,MatTabsModule, NgxSpinnerModule, ReactiveFormsModule]
 })
 export class AppComponent implements OnInit {
   title = 'THIRSTY';
