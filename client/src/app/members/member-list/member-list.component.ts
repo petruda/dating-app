@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MemberCardComponent } from "../member-card/member-card.component";
 import { Observable } from 'rxjs';
+import { Pagination } from '../../_models/pagination';
 
 @Component({
     selector: 'app-member-list',
@@ -15,13 +16,26 @@ import { Observable } from 'rxjs';
     imports: [CommonModule, HttpClientModule, RouterModule, MemberCardComponent]
 })
 export class MemberListComponent {
-    members$: Observable<Member[]> | undefined;
-
+    // members$: Observable<Member[]> | undefined;
+    members : Member[] = [];
+    pagination: Pagination | undefined;
+    pageNumber = 1;
+    pageSize = 5;
     constructor(private memberService: MembersService){ }
 
     ngOnInit(): void{
-      this.members$ = this.memberService.getMembers();
+      // this.members$ = this.memberService.getMembers();
+      this.loadmembers()
     }
-
+    loadmembers(){
+      this.memberService.getMembers(this.pageNumber, this.pageSize).subscribe({
+        next: response => {
+          if (response.result && response.pagination){
+            this.members = response.result;
+            this.pagination = response.pagination;
+          }
+        }
+      })
+    }
 
 }
