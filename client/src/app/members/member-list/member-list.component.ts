@@ -7,13 +7,18 @@ import { RouterModule } from '@angular/router';
 import { MemberCardComponent } from "../member-card/member-card.component";
 import { Observable } from 'rxjs';
 import { Pagination } from '../../_models/pagination';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { PaginatorModule } from 'primeng/paginator';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
     selector: 'app-member-list',
     standalone: true,
     templateUrl: './member-list.component.html',
     styleUrl: './member-list.component.scss',
-    imports: [CommonModule, HttpClientModule, RouterModule, MemberCardComponent]
+    imports: [CommonModule, HttpClientModule, RouterModule, MemberCardComponent, MatPaginatorModule,FormsModule, PaginatorModule,NgbPaginationModule]
 })
 export class MemberListComponent {
     // members$: Observable<Member[]> | undefined;
@@ -21,6 +26,8 @@ export class MemberListComponent {
     pagination: Pagination | undefined;
     pageNumber = 1;
     pageSize = 5;
+    first: number = 0;
+    rows: number = 5;
     constructor(private memberService: MembersService){ }
 
     ngOnInit(): void{
@@ -36,6 +43,17 @@ export class MemberListComponent {
           }
         }
       })
+    }
+
+    pageChanged( event: any) {
+
+      if (this.pageNumber !== event.page){
+         this.rows = event.rows;
+         this.first= event.first;
+         this.pageNumber = event.page;
+         this.loadmembers();
+      }
+     
     }
 
 }

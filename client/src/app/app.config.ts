@@ -1,7 +1,7 @@
 import { ApplicationConfig, CUSTOM_ELEMENTS_SCHEMA, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import {HttpClientModule } from '@angular/common/http';
+import {HttpClient, HttpClientModule } from '@angular/common/http';
 import { errhandlInterceptor } from './_interceptors/errhandl.interceptor';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
@@ -14,9 +14,11 @@ import { BusyService } from './_services/busy.service';
 import { loadingImplInterceptor } from './_interceptors/loading-impl.interceptor';
 
 
+
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
     MembersService,
+    HttpClient,
     AccountService,
     BusyService,
     provideAnimations(),

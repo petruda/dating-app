@@ -3,3 +3,25 @@
         <app-member-card [member]="member"></app-member-card>
     </div>
 </div>
+
+<!-- <div *ngIf="pagination" class="card flex justify-content-center">
+    <p-paginator
+        (onPageChange)="pageChanged($event)"     
+        [first]="first" 
+        [rows]="rows" 
+        [totalRecords]="pagination.totalItems" 
+        [rowsPerPageOptions]="[5,10]">
+    </p-paginator>
+</div> -->
+<div class="d-flex justify-content-center" *ngIf="pagination">
+
+    <ngb-pagination
+     [collectionSize]="pagination.totalItems"
+     [pageSize]="pagination.itemsPerPage"
+     [maxSize]="10"
+     [(ngModel)]="pagination.currentPage"
+     (pageChange)="pageChanged($event)"
+     [(page)]="pagination.currentPage"
+     [boundaryLinks]="true" />
+
+</div>

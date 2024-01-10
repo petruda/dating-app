@@ -1,7 +1,7 @@
 <mat-form-field >
-    <mat-label >Choose a date</mat-label>
+    <mat-label  >Choose a date</mat-label>
     <input
-      class="bg-transparent"
+      
       type="text"
       [formControl]="control"
       matInput
@@ -12,9 +12,9 @@
       <div class="invalid-feedback" *ngIf="control.errors?.['required']">
       {{label}} is required
       </div>
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker">
-      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    <mat-hint >MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle  matIconSuffix [for]="picker">
+      <mat-icon  matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
     </mat-datepicker-toggle>
-    <mat-datepicker style="height: 5vh;" #picker></mat-datepicker>
+    <mat-datepicker  style="height: 5vh;" #picker></mat-datepicker>
   </mat-form-field>
