@@ -23,7 +23,6 @@ export class DatePickerComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() maxDate: Date | undefined;
 
-
   constructor(@Self() public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
   }

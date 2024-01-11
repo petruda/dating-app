@@ -17,13 +17,20 @@
           <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
         </li>
         </ul>
-                
-        
 
-        <div class="btn-group" *ngIf="accountService.currentUser$ | async" role="group" aria-label="Basic outlined example">
-          <button type="button" routerLink="/member/edit" class=" ml-2 btn btn-outline-primary">Edit Profile</button>
-          <button type="button" (click)="logout()" class="btn btn-outline-primary">Logout</button>
-        </div>
+
+        <ul class="noMarker align-content-center mt-2 p-2">
+        <li ngbDropdown *ngIf="(accountService.currentUser$ | async) as user" class="nav-item">
+          <button type="button" class="nav-link" ngbDropdownToggle>
+            <img src={{user.photoUrl}} alt="" class="thumbnail me-2" style="height: 35px;">
+            Welcome {{user.knownAs}}</button>
+          <div ngbDropdownMenu>
+            <button ngbDropdownItem  type="button" routerLink="/member/edit" class=" ml-2 btn btn-outline-primary">Edit Profile</button>
+            <button ngbDropdownItem type="button" (click)="logout()" class="btn btn-outline-primary">Logout</button>
+          </div>
+        </li>
+       </ul>
+
 
         <form *ngIf="!(accountService.currentUser$ | async)" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
           <input 

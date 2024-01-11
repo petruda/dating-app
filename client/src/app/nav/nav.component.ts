@@ -5,6 +5,7 @@ import { AccountService } from '../_services/account.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { User } from '../_models/user';
+import { NgbNavModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -12,13 +13,13 @@ import { User } from '../_models/user';
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule,NgbNavModule, NgbDropdownModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
   model: any = {};
-  
+  user: User | undefined;
 
   constructor(public accountService: AccountService, private router: Router){ }
 
