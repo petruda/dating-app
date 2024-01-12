@@ -12,6 +12,7 @@ import { UserParams } from '../../_models/userPrams';
 import { User } from '../../_models/user';
 import { AccountService } from '../../_services/account.service';
 import { take } from 'rxjs';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { take } from 'rxjs';
     standalone: true,
     templateUrl: './member-list.component.html',
     styleUrl: './member-list.component.scss',
-    imports: [CommonModule, HttpClientModule, RouterModule, MemberCardComponent,FormsModule,NgbPaginationModule]
+    imports: [CommonModule, HttpClientModule, RouterModule, MemberCardComponent,FormsModule,NgbPaginationModule, MatRadioModule]
 })
 export class MemberListComponent implements OnInit {
     // members$: Observable<Member[]> | undefined;
@@ -27,7 +28,18 @@ export class MemberListComponent implements OnInit {
     pagination: Pagination | undefined;
     userParams: UserParams | undefined;
     user: User | undefined;
+    genderList = [{value: 'male', display: 'Males'}, {value:'female', display: 'Females'}]
+    orderList = [
+      {
+        value : 'lastActive',
+        display: 'Last Active'
+      },
+      {
+        value : 'created',
+        display: 'Newest'
+      },
 
+    ]
 
     constructor(private memberService: MembersService, private accountService: AccountService){ 
       this.accountService.currentUser$.pipe(take(1)).subscribe({
@@ -42,8 +54,10 @@ export class MemberListComponent implements OnInit {
 
     ngOnInit(): void{
       // this.members$ = this.memberService.getMembers();
-      this.loadmembers()
+      this.loadmembers();
     }
+
+
     loadmembers(){
       if( !this.userParams) return;
       this.memberService.getMembers(this.userParams).subscribe({
@@ -54,6 +68,13 @@ export class MemberListComponent implements OnInit {
           }
         }
       })
+    }
+
+    resetFilters(){
+      if(this.user){
+        this.userParams = new UserParams(this.user);
+        this.loadmembers();
+      }
     }
 
     pageChanged( event: any) {

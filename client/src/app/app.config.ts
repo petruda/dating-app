@@ -12,6 +12,7 @@ import { GALLERY_CONFIG, GalleryConfig } from 'ng-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BusyService } from './_services/busy.service';
 import { loadingImplInterceptor } from './_interceptors/loading-impl.interceptor';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 
@@ -23,7 +24,7 @@ export const appConfig: ApplicationConfig = {
     BusyService,
     provideAnimations(),
     provideToastr(),
-    importProvidersFrom(HttpClientModule, NgxSpinnerModule.forRoot({ type: 'ball-atom' })),
+    importProvidersFrom(HttpClientModule, NgxSpinnerModule.forRoot({ type: 'ball-atom' }), ButtonsModule.forRoot()),
     jwtImplInterceptor,
     errhandlInterceptor, 
     loadingImplInterceptor,
