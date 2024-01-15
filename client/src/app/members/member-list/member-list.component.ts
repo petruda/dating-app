@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MemberCardComponent } from "../member-card/member-card.component";
 import { Pagination } from '../../_models/pagination';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserParams } from '../../_models/userPrams';
 import { User } from '../../_models/user';
@@ -20,36 +20,19 @@ import {MatRadioModule} from '@angular/material/radio';
     standalone: true,
     templateUrl: './member-list.component.html',
     styleUrl: './member-list.component.scss',
-    imports: [CommonModule, HttpClientModule, RouterModule, MemberCardComponent,FormsModule,NgbPaginationModule, MatRadioModule]
+    imports: [CommonModule, HttpClientModule, RouterModule, MemberCardComponent,FormsModule,NgbPaginationModule, MatRadioModule,ReactiveFormsModule,FormsModule]
 })
 export class MemberListComponent implements OnInit {
     // members$: Observable<Member[]> | undefined;
     members : Member[] = [];
     pagination: Pagination | undefined;
     userParams: UserParams | undefined;
-    user: User | undefined;
-    genderList = [{value: 'male', display: 'Males'}, {value:'female', display: 'Females'}]
-    orderList = [
-      {
-        value : 'lastActive',
-        display: 'Last Active'
-      },
-      {
-        value : 'created',
-        display: 'Newest'
-      },
+    genderList = [{value: 'male', display: 'Males'}, {value:'female', display: 'Females'}];
+    created = 'created';
+    lastActive = 'lastActive';
 
-    ]
-
-    constructor(private memberService: MembersService, private accountService: AccountService){ 
-      this.accountService.currentUser$.pipe(take(1)).subscribe({
-        next: user => {
-          if(user){
-          this.userParams = new UserParams(user);
-          this.user = user;
-        }
-        }
-      })
+    constructor(private memberService: MembersService){ 
+     this.userParams = this.memberService.getUserParams();
     }
 
     ngOnInit(): void{
@@ -59,8 +42,9 @@ export class MemberListComponent implements OnInit {
 
 
     loadmembers(){
-      if( !this.userParams) return;
-      this.memberService.getMembers(this.userParams).subscribe({
+      if(this.userParams) {
+        this.memberService.setUserParams(this.userParams);
+        this.memberService.getMembers(this.userParams).subscribe({
         next: response => {
           if (response.result && response.pagination){
             this.members = response.result;
@@ -68,21 +52,31 @@ export class MemberListComponent implements OnInit {
           }
         }
       })
+      }
+      
     }
 
     resetFilters(){
-      if(this.user){
-        this.userParams = new UserParams(this.user);
+      
+        this.userParams = this.memberService.resetUserParams();
         this.loadmembers();
-      }
+      
     }
 
     pageChanged( event: any) {
       if (this.userParams && this.userParams?.pagenumber !== event){
          this.userParams.pagenumber = event;
+         this.memberService.setUserParams(this.userParams);
          this.loadmembers();
       }
      
     }
+
+    ordrByChange(value: string){
+      if(this.userParams){
+      this.userParams.orderBy = value;
+      this.loadmembers()
+    }
+  }
 
 }

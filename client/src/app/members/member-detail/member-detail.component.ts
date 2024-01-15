@@ -5,12 +5,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTabsModule} from '@angular/material/tabs';
-
 import { GalleryModule, GalleryItem, ImageItem } from 'ng-gallery';
+import { TimeagoModule } from 'ngx-timeago';
 @Component({
   selector: 'app-member-detail',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule,MatTabsModule,GalleryModule],
+  imports: [CommonModule, HttpClientModule, RouterModule,MatTabsModule,GalleryModule, TimeagoModule],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.scss'
 })

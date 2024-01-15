@@ -12,11 +12,11 @@
             </div>
             <div class="card-body">
                 <strong>Last Active::</strong>
-                <p> {{memeber.lastActive}}</p>
+                <p> {{memeber.lastActive + 'Z' | timeago}}</p>
             </div>
             <div class="card-body">
                 <strong>Member since:</strong>
-                <p> {{memeber.created}}</p>
+                <p> {{memeber.created | date: 'dd MMM yyyy'}}</p>
             </div>
     
             <div class="card-footer">

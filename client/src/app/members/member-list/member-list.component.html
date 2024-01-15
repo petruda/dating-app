@@ -26,8 +26,8 @@
 
             <div class="col">
                 <div class="btn-group float-end">
-                    <button type="button" class="btn btn-primary" name="orderBy"  (click)="loadmembers()" (change)="userParams.orderBy = 'lastActive'" >Last Active</button>
-                    <button type="button" class="btn btn-primary" name="orderBy"  (click)="loadmembers()" (change)="userParams.orderBy = 'created'"  >Newest</button>
+                    <button type="button" class="btn btn-primary" #l name="lastActive"  (click)="ordrByChange(l.name)">Last Active</button>
+                    <button type="button" class="btn btn-primary" #c name="created" (click)="ordrByChange(c.name)">Newest Members</button>
                 </div>
             </div>
 
