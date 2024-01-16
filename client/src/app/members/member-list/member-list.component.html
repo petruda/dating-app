@@ -3,7 +3,7 @@
 </div>
 
 <div class="text-center container mt-3" *ngIf="userParams">
-    <form #form="ngForm" class="d-flex mb-3"  (ngSubmit)="loadmembers()" autocomplete="off">
+    <form #form="ngForm" class="d-flex mb-3"  (ngSubmit)="loadMembers()" autocomplete="off">
             <div class="d-flex mx-2">
                 <label  class="cel-form-label">Age From:</label>
                 <input type="number" class="form-control ms-1" style="width: 70px;" name="minAge" [(ngModel)]="userParams.minAge">

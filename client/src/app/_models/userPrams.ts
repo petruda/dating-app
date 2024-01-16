@@ -4,7 +4,7 @@ export class UserParams{
     gender: string;
     minAge = 18;
     maxAge = 99;
-    pagenumber= 1;
+    pageNumber= 1;
     pageSize = 5;
     orderBy = 'lastActive'
 

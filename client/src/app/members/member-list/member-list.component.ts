@@ -37,11 +37,11 @@ export class MemberListComponent implements OnInit {
 
     ngOnInit(): void{
       // this.members$ = this.memberService.getMembers();
-      this.loadmembers();
+      this.loadMembers();
     }
 
 
-    loadmembers(){
+    loadMembers(){
       if(this.userParams) {
         this.memberService.setUserParams(this.userParams);
         this.memberService.getMembers(this.userParams).subscribe({
@@ -59,15 +59,15 @@ export class MemberListComponent implements OnInit {
     resetFilters(){
       
         this.userParams = this.memberService.resetUserParams();
-        this.loadmembers();
+        this.loadMembers();
       
     }
 
     pageChanged( event: any) {
-      if (this.userParams && this.userParams?.pagenumber !== event){
-         this.userParams.pagenumber = event;
+      if (this.userParams && this.userParams?.pageNumber !== event){
+         this.userParams.pageNumber = event;
          this.memberService.setUserParams(this.userParams);
-         this.loadmembers();
+         this.loadMembers();
       }
      
     }
@@ -75,7 +75,7 @@ export class MemberListComponent implements OnInit {
     ordrByChange(value: string){
       if(this.userParams){
       this.userParams.orderBy = value;
-      this.loadmembers()
+      this.loadMembers()
     }
   }
 
