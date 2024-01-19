@@ -22,7 +22,7 @@
         <ul class="noMarker align-content-center mt-2 p-2">
         <li ngbDropdown *ngIf="(accountService.currentUser$ | async) as user" class="nav-item">
           <button type="button" class="nav-link" ngbDropdownToggle>
-            <img src={{user.photoUrl}} alt="" class="thumbnail me-2" style="height: 35px;">
+            <img src="{{user.photoUrl || './assets/user.png'}}" alt="" class="thumbnail me-2" style="height: 35px;">
             Welcome {{user.knownAs}}</button>
           <div ngbDropdownMenu>
             <button ngbDropdownItem  type="button" routerLink="/member/edit" class=" ml-2 btn btn-outline-primary">Edit Profile</button>

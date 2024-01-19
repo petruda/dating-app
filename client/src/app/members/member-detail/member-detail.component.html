@@ -1,47 +1,47 @@
-<div class="row align-content-center" *ngIf="memeber">
+<div class="row align-content-center">
     <div class="col-4">
         <div class="card">
-            <img src="{{memeber.photoUrl || './assets/user.png'}}" alt="{{memeber.knownAs}}" class="card-img-top img-thumbnail">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
             <div class="card-body">
                 <strong>Location:</strong>
-                <p> {{memeber.city}}, {{memeber.country}}</p>
+                <p> {{member.city}}, {{member.country}}</p>
             </div>
             <div class="card-body">
                 <strong>Age:</strong>
-                <p> {{memeber.age}}</p>
+                <p> {{member.age}}</p>
             </div>
             <div class="card-body">
                 <strong>Last Active::</strong>
-                <p> {{memeber.lastActive + 'Z' | timeago}}</p>
+                <p> {{member.lastActive + 'Z' | timeago}}</p>
             </div>
             <div class="card-body">
                 <strong>Member since:</strong>
-                <p> {{memeber.created | date: 'dd MMM yyyy'}}</p>
+                <p> {{member.created | date: 'dd MMM yyyy'}}</p>
             </div>
     
             <div class="card-footer">
                 <div class="btn-group d-flex">
-                    <button class="btn btn-primary">Like</button>
-                    <button class="btn btn-primary">Message</button>
+                    <button class="btn btn-primary" (click)="addLike(member)">Like</button>
+                    <button class="btn btn-primary" mat-raised-button (click)="getMessagesTab()">Message</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="col-8 tabs">
-        <mat-tab-group [dynamicHeight]="true">
-            <mat-tab label="About {{memeber.knownAs}}">
+        <mat-tab-group [(selectedIndex)]="selectedIndex" (selectedTabChange)="selectedTabValue($event)" [dynamicHeight]="true" #membertabs>
+            <mat-tab label="About {{member.knownAs}}">
             <ng-template matTabContent>
                 <h4>Description</h4>
-                 <p>{{memeber.introduction}}</p>
+                 <p>{{member.introduction}}</p>
                   <h4>Looking for</h4>
-                 <p>{{memeber.lookingFor}}</p>
+                 <p>{{member.lookingFor}}</p>
             </ng-template>
             </mat-tab>
             <mat-tab label="Interests"> 
              <ng-template matTabContent>
                 <h4>Interests</h4>
-                <p>{{memeber.interests}}</p>
+                <p>{{member.interests}}</p>
             </ng-template>
             </mat-tab>
             <mat-tab label="Photos"> 
@@ -49,9 +49,9 @@
                 <gallery [items]="images" thumbPosition="left" class="gallery"></gallery>
             </ng-template>    
             </mat-tab>
-            <mat-tab label="Messages"> 
+            <mat-tab  label="Messages"> 
                 <ng-template matTabContent>
-                <h4>Messages will go here</h4>    
+                <app-member-messages [username]="member.userName" [messages]="messages"></app-member-messages>    
             </ng-template>
             </mat-tab>
           </mat-tab-group>
