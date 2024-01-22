@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody class="allign-middle">
-            <tr *ngFor="let message of messages" routerLink="{{container === 'Outbox' ? '/members/' + message.recipientUsername : '/members/' + message.senderUsername}}" [queryParams]="{index: '3'}">
+            <tr [hidden]="loading" *ngFor="let message of messages" routerLink="{{container === 'Outbox' ? '/members/' + message.recipientUsername : '/members/' + message.senderUsername}}" [queryParams]="{index: '3'}">
                 <td>{{message.content}}</td>
                 <td>
                     <div *ngIf="container === 'Outbox'">
@@ -40,7 +40,7 @@
                 </td>
                 <td class="text-center">{{message.messageSent | timeago}}</td>
                 <td>
-                    <button class="btn btn-danger">Delete</button>
+                    <button (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)" class="btn btn-danger">Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -48,7 +48,7 @@
 </div>
 
 
-<div class="d-flex justify-content-center" *ngIf="pagination && (messages && messages.length > 0)">
+<div class="d-flex justify-content-center" *ngIf="!loading && pagination && (messages && messages.length > 0)">
 
     <ngb-pagination
      [collectionSize]="pagination.totalItems"
