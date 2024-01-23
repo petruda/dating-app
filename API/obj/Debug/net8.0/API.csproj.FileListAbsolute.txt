@@ -134,3 +134,9 @@
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/CloudinaryDotNet.dll
 /Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
+/Users/petrucruceur/repos/dating-app/API/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
