@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { User } from '../_models/user';
 import { NgbNavModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { HasRoleDirective } from '../_directives/has-role.directive';
 
 
 
@@ -13,7 +14,7 @@ import { NgbNavModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule,NgbNavModule, NgbDropdownModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule,NgbNavModule, NgbDropdownModule,HasRoleDirective],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })

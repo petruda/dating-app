@@ -3,7 +3,6 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { AccountService } from '../_services/account.service';
-import { User } from '../_models/user';
 
 
 @Injectable()

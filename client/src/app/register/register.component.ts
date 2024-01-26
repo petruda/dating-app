@@ -9,27 +9,30 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';import { TextInputComponent } from '../_forms/text-input/text-input.component';
 import { DatePickerComponent } from '../_forms/date-picker/date-picker.component';
 import { Router } from '@angular/router';
+import { DatepickerModalComponent } from "../modals/datepicker-modal/datepicker-modal.component";
+import { NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-register',
     standalone: true,
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss',
-    imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, TextInputComponent,MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule,DatePickerComponent]
+    imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule, TextInputComponent, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, DatePickerComponent, DatepickerModalComponent]
 })
 export class RegisterComponent {
 
   @Output() cancelRegister = new EventEmitter();
     
     registerForm: FormGroup = new FormGroup({});
-    maxDate: Date = new Date();
+    date : Date = new Date();
+    maxDate: NgbDate = new NgbDate((this.date.setFullYear(this.date.getFullYear() -18)), this.date.getMonth(), this.date.getDay() );
     validationErrors: string[] | undefined;
 
   constructor(private accountService: AccountService, private fb: FormBuilder, private router: Router){ }
 
   ngOnInit(): void{
     this.initializeForm();
-    this.maxDate.setFullYear(this.maxDate.getFullYear() -18);
+  
   }
 
       initializeForm(){
