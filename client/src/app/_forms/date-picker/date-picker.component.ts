@@ -5,8 +5,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import { ControlValueAccessor, FormControl, FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbDatepickerModule, NgbAlertModule, NgbDateStruct, NgbDate, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-date-picker',
   standalone: true,
@@ -15,14 +16,15 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatIconModule, CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule],
+    MatIconModule, CommonModule, HttpClientModule, ReactiveFormsModule,
+    NgbDatepickerModule, NgbAlertModule, FormsModule, JsonPipe],
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss'
 })
 export class DatePickerComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() maxDate: Date | undefined;
-
+  
   constructor(@Self() public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
   }
@@ -35,6 +37,6 @@ export class DatePickerComponent implements ControlValueAccessor {
   }
   get control(): FormControl{
     return this.ngControl.control as FormControl
-  }
 
+}
 }

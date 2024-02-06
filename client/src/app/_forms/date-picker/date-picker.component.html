@@ -9,7 +9,8 @@
       [class.is-invalid]="control.touched && control.invalid"
       [max]="maxDate"
       >
-      <div class="invalid-feedback" *ngIf="control.errors?.['required']">
+
+          <div class="invalid-feedback" *ngIf="control.errors?.['required']">
       {{label}} is required
       </div>
     <mat-hint >MM/DD/YYYY</mat-hint>
